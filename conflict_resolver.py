@@ -1,21 +1,3 @@
-"""
-=============================================================================
-MODULE XỬ LÝ XUNG ĐỘT LUẬT (CONFLICT RESOLVER)
-Phụ trách: Thành viên 3 (TV3)
-Đồ án: Hệ Chuyên Gia Tư Vấn Chọn Ngành Học Sinh THPT / Kỹ Nghệ Tri Thức
-=============================================================================
-Mô tả nhiệm vụ TV3:
-- Nhận vào danh sách `conflict_set` (các luật cùng thỏa mãn tiền đề ở vòng lặp)
-  và `working_memory` (bộ nhớ làm việc chứa các sự kiện hiện hành kèm timestamp).
-- Thực hiện thuật toán sắp xếp & lọc đa tiêu chí chuẩn Hệ chuyên gia:
-    1. Độ đặc thù (Specificity): Luật nhiều điều kiện vế IF hơn sẽ được ưu tiên.
-    2. Độ ưu tiên (Priority/Salience): Trọng số chuyên gia thiết kế (Tầng 1 > Tầng 2 > Tầng 3).
-    3. Độ mới của sự kiện (Recency): Ưu tiên luật dựa trên sự kiện mới nạp vào WM gần nhất.
-    4. Phá hòa ổn định (Tie-breaking): Giữ thứ tự ổn định tự nhiên theo mã luật.
-- Trả về: (selected_rule: Rule, resolution_reason: str) phục vụ Pha Act và Module Giải trình.
-=============================================================================
-"""
-
 from typing import Dict, List, Optional, Tuple
 from structs import Fact, Rule
 

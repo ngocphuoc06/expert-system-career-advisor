@@ -1,0 +1,10 @@
+id,premises,conclusion,priority,explanation
+R01,"F01,F02",F07,2,"Khi sinh viên vừa giỏi Toán (Xác suất, Đại số) vừa biết lập trình Python thì đã đủ nền tảng cốt lõi để học Máy học (Machine Learning)."
+R02,"F07,F03",F08,2,"Có nền tảng Máy học (F07) kết hợp đam mê phân tích số liệu bảng biểu (F03) sẽ hình thành năng lực phân tích dữ liệu có cấu trúc (F08)."
+R03,"F07,F01",F09,1,"Có nền tảng Máy học (F07) và nền tảng Toán vững chắc (F01) cho phép tiếp cận các mô hình Mạng nơ-ron và Học sâu (Deep Learning - F09)."
+R04,"F07,F08,F03",F10,3,"Hội tụ nền tảng Máy học (F07), năng lực phân tích dữ liệu cấu trúc (F08) và đam mê số liệu (F03) dẫn tới kết luận phù hợp nhất là Khoa học Dữ liệu (Data Scientist - F10)."
+R05,"F09,F04",F11,3,"Sẵn sàng về Học sâu (F09) cộng với đam mê xử lý ảnh/video (F04) là tổ hợp đặc trưng của Kỹ sư Thị giác Máy tính (Computer Vision Engineer - F11)."
+R06,"F09,F05",F12,3,"Sẵn sàng về Học sâu (F09) cộng với đam mê ngôn ngữ/chatbot (F05) dẫn đến định hướng Kỹ sư Xử lý Ngôn ngữ Tự nhiên & LLM (NLP Engineer - F12)."
+R07,"F07,F02,F06",F13,2,"Có nền tảng Máy học (F07), kỹ năng lập trình Python (F02) và tư duy hạ tầng hệ thống (F06) rất phù hợp với vị trí Kỹ sư MLOps (F13)."
+R08,"F01,F03",F08,1,"Có tư duy Toán học (F01) kết hợp sở thích phân tích bảng biểu (F03) cũng bước đầu hình thành năng lực xử lý dữ liệu có cấu trúc (F08)."
+

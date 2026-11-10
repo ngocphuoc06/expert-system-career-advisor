@@ -1,0 +1,2194 @@
+{
+  "version": "v3",
+  "ontology": {
+    "Diem_*": {
+      "layer": "initial",
+      "type": "float|null",
+      "domain": "[0,10]; kem loai diem (hoc ba/thi thu/thi chinh thuc)"
+    },
+    "So_Thich": {
+      "layer": "initial",
+      "type": "set[str]",
+      "domain": [
+        "May_Moc",
+        "Lap_Trinh",
+        "Nghien_Cuu",
+        "Sang_Tao",
+        "Giao_Tiep",
+        "Giang_Day",
+        "Kinh_Doanh",
+        "Con_So_Du_Lieu",
+        "Cham_Soc_Suc_Khoe",
+        "Tranh_Bien_Luat"
+      ]
+    },
+    "Nang_Luc_Noi_Troi": {
+      "layer": "initial",
+      "type": "str",
+      "domain": [
+        "Tu_Duy_Logic",
+        "Thao_Tac_Ky_Thuat",
+        "Tham_My_Nghe_Thuat",
+        "Ngon_Ngu_Dien_Dat",
+        "To_Chuc_Lanh_Dao",
+        "Phan_Tich_Chi_Tiet"
+      ]
+    },
+    "To_Hop_Du_Kien": {
+      "layer": "initial",
+      "type": "str",
+      "domain": "ma to hop dung de tinh tong (A00, A01, B00, C00, D01, D07, B08, X06, X26)"
+    },
+    "Tong_Diem_Du_Kien": {
+      "layer": "initial(derived by code)",
+      "type": "float|null",
+      "domain": "[0,30]; = tong 3 mon cung loai diem"
+    },
+    "The_Manh_Khoi": {
+      "layer": "tier1",
+      "type": "set[str]+CF",
+      "domain": [
+        "KHOI_A00",
+        "KHOI_A01",
+        "KHOI_B00",
+        "KHOI_C00",
+        "KHOI_D01",
+        "KHOI_H00",
+        "KHOI_V00"
+      ]
+    },
+    "Ma_Holland": {
+      "layer": "tier1",
+      "type": "set[str]+CF",
+      "domain": [
+        "R_REALISTIC",
+        "I_INVESTIGATIVE",
+        "A_ARTISTIC",
+        "S_SOCIAL",
+        "E_ENTERPRISING",
+        "C_CONVENTIONAL"
+      ]
+    },
+    "Phan_Khuc_Diem": {
+      "layer": "tier1",
+      "type": "str+CF (don tri)",
+      "domain": [
+        "TOP_DAU",
+        "KHA_TOT",
+        "AN_TOAN"
+      ]
+    },
+    "Nhom_Nganh_Phu_Hop": {
+      "layer": "tier2",
+      "type": "set[str]+CF",
+      "domain": [
+        "NHOM_CNTT",
+        "NHOM_KY_THUAT",
+        "NHOM_KINH_TE_QT",
+        "NHOM_LOGISTICS",
+        "NHOM_Y_DUOC",
+        "NHOM_SU_PHAM",
+        "NHOM_NGON_NGU_XH",
+        "NHOM_PHAP_LUAT",
+        "NHOM_NGHE_THUAT",
+        "NHOM_HOA_MOI_TRUONG"
+      ]
+    },
+    "Khuyen_Nghi_Chinh_Thuc": {
+      "layer": "tier3/fallback",
+      "type": "set[rec_key]+CF",
+      "domain": "xem RECS"
+    }
+  },
+  "constants": {
+    "SEG_TOP": 26.5,
+    "SEG_GOOD": 23.0,
+    "CF_THRESHOLD": 0.2
+  },
+  "tier_bands": {
+    "1": [
+      81,
+      95
+    ],
+    "2": [
+      68,
+      78
+    ],
+    "3": [
+      45,
+      60
+    ],
+    "4": [
+      1,
+      10
+    ]
+  },
+  "conflict_resolution": [
+    "refraction",
+    "priority_desc",
+    "specificity_desc",
+    "recency_desc",
+    "rule_id_asc"
+  ],
+  "nhom_nganh": {
+    "NHOM_CNTT": "Máy tính và Công nghệ thông tin",
+    "NHOM_KY_THUAT": "Kỹ thuật và Công nghệ kỹ thuật",
+    "NHOM_KINH_TE_QT": "Kinh tế, Kinh doanh và Quản lý",
+    "NHOM_LOGISTICS": "Logistics và Quản lý chuỗi cung ứng",
+    "NHOM_Y_DUOC": "Khoa học sức khỏe và khoa học sự sống",
+    "NHOM_SU_PHAM": "Giáo dục và Sư phạm",
+    "NHOM_NGON_NGU_XH": "Ngôn ngữ, Nhân văn và Khoa học xã hội",
+    "NHOM_PHAP_LUAT": "Pháp luật",
+    "NHOM_NGHE_THUAT": "Nghệ thuật và Mỹ thuật ứng dụng",
+    "NHOM_HOA_MOI_TRUONG": "Hóa học, Vật liệu và Môi trường"
+  },
+  "major_catalog": {
+    "KHMT": {
+      "ten": "Khoa học máy tính",
+      "ma_hien_hanh": "7480101",
+      "ma_moi": "480101",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "MMT": {
+      "ten": "Mạng máy tính và truyền thông dữ liệu",
+      "ma_hien_hanh": "7480102",
+      "ma_moi": "480102",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "KTPM": {
+      "ten": "Kỹ thuật phần mềm",
+      "ma_hien_hanh": "7480103",
+      "ma_moi": "480103",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "HTTT": {
+      "ten": "Hệ thống thông tin",
+      "ma_hien_hanh": "7480104",
+      "ma_moi": "480104",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "KTMT": {
+      "ten": "Kỹ thuật máy tính",
+      "ma_hien_hanh": "7480106",
+      "ma_moi": "480106",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "AI": {
+      "ten": "Trí tuệ nhân tạo",
+      "ma_hien_hanh": "7480107",
+      "ma_moi": "480107",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "CNTT": {
+      "ten": "Công nghệ thông tin",
+      "ma_hien_hanh": "7480201",
+      "ma_moi": "480201",
+      "xac_minh_tt74": false,
+      "ghi_chu": "chưa đối chiếu Phụ lục I"
+    },
+    "KHDL": {
+      "ten": "Khoa học dữ liệu",
+      "ma_hien_hanh": "7480109",
+      "ma_moi": "460108",
+      "xac_minh_tt74": true,
+      "ghi_chu": "chuyển sang lĩnh vực 46 (Toán và thống kê) theo TT 74/2026"
+    },
+    "CKDT": {
+      "ten": "Công nghệ kỹ thuật cơ điện tử",
+      "ma_hien_hanh": "7510203",
+      "ma_moi": "510203",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "DDT": {
+      "ten": "Công nghệ kỹ thuật điện, điện tử",
+      "ma_hien_hanh": "7510301",
+      "ma_moi": "510301",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "CNKT_DKTDH": {
+      "ten": "Công nghệ kỹ thuật điều khiển và tự động hóa",
+      "ma_hien_hanh": "7510303",
+      "ma_moi": "510303",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "KT_DKTDH": {
+      "ten": "Kỹ thuật điều khiển và tự động hóa",
+      "ma_hien_hanh": "7520216",
+      "ma_moi": "520216",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "OTO": {
+      "ten": "Công nghệ kỹ thuật ô tô",
+      "ma_hien_hanh": "7510205",
+      "ma_moi": "510205",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "KTQT": {
+      "ten": "Kinh tế quốc tế",
+      "ma_hien_hanh": "7310106",
+      "ma_moi": "310106",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "KTDT": {
+      "ten": "Kinh tế đầu tư",
+      "ma_hien_hanh": "7310104",
+      "ma_moi": "310104",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "QTKD": {
+      "ten": "Quản trị kinh doanh",
+      "ma_hien_hanh": "7340101",
+      "ma_moi": "340101",
+      "xac_minh_tt74": true,
+      "ghi_chu": "TT 74 gộp một số ngành quản trị vào ngành này"
+    },
+    "MKT": {
+      "ten": "Marketing",
+      "ma_hien_hanh": "7340115",
+      "ma_moi": "340115",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "TCNH": {
+      "ten": "Tài chính - Ngân hàng",
+      "ma_hien_hanh": "7340201",
+      "ma_moi": "340201",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "KT": {
+      "ten": "Kế toán",
+      "ma_hien_hanh": "7340301",
+      "ma_moi": "340301",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "LOG": {
+      "ten": "Logistics và Quản lý chuỗi cung ứng",
+      "ma_hien_hanh": "7510605",
+      "ma_moi": "510605",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "YK": {
+      "ten": "Y khoa",
+      "ma_hien_hanh": "7720101",
+      "ma_moi": "720101",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "DUOC": {
+      "ten": "Dược học",
+      "ma_hien_hanh": "7720201",
+      "ma_moi": "720201",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "DD": {
+      "ten": "Điều dưỡng",
+      "ma_hien_hanh": "7720301",
+      "ma_moi": "720301",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "YHDP": {
+      "ten": "Y học dự phòng",
+      "ma_hien_hanh": "7720110",
+      "ma_moi": null,
+      "xac_minh_tt74": false,
+      "ghi_chu": "cần đối chiếu: TT 74 có sắp xếp lại nhóm Y học"
+    },
+    "XN": {
+      "ten": "Kỹ thuật xét nghiệm y học",
+      "ma_hien_hanh": "7720601",
+      "ma_moi": "720601",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "SP_TOAN": {
+      "ten": "Sư phạm Toán học",
+      "ma_hien_hanh": "7140209",
+      "ma_moi": "140209",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "SP_TIN": {
+      "ten": "Sư phạm Tin học",
+      "ma_hien_hanh": "7140210",
+      "ma_moi": "140210",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "SP_VAN": {
+      "ten": "Sư phạm Ngữ văn",
+      "ma_hien_hanh": "7140217",
+      "ma_moi": "140217",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "SP_NN": {
+      "ten": "Sư phạm Tiếng Anh",
+      "ma_hien_hanh": "7140231",
+      "ma_moi": null,
+      "xac_minh_tt74": false,
+      "ghi_chu": "TT 74 gộp thành ngành 'Sư phạm tiếng nước ngoài'; mã mới chưa xác minh"
+    },
+    "GDTH": {
+      "ten": "Giáo dục Tiểu học",
+      "ma_hien_hanh": "7140202",
+      "ma_moi": "140202",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "NNA": {
+      "ten": "Ngôn ngữ Anh",
+      "ma_hien_hanh": "7220201",
+      "ma_moi": "220201",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "QHQT": {
+      "ten": "Quan hệ quốc tế",
+      "ma_hien_hanh": "7310206",
+      "ma_moi": "310206",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "TLH": {
+      "ten": "Tâm lý học",
+      "ma_hien_hanh": "7310401",
+      "ma_moi": "310401",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "BC": {
+      "ten": "Báo chí",
+      "ma_hien_hanh": "7320101",
+      "ma_moi": "320101",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "LUAT": {
+      "ten": "Luật",
+      "ma_hien_hanh": "7380101",
+      "ma_moi": "380101",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "LUAT_KT": {
+      "ten": "Luật kinh tế",
+      "ma_hien_hanh": "7380107",
+      "ma_moi": "380107",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "TKDH": {
+      "ten": "Thiết kế đồ họa",
+      "ma_hien_hanh": "7210403",
+      "ma_moi": "210403",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "TKTT": {
+      "ten": "Thiết kế thời trang",
+      "ma_hien_hanh": "7210404",
+      "ma_moi": "210404",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "NTS": {
+      "ten": "Nghệ thuật số",
+      "ma_hien_hanh": "7210408",
+      "ma_moi": "210408",
+      "xac_minh_tt74": false,
+      "ghi_chu": "mã theo bản thảo gốc, CHƯA xác minh"
+    },
+    "CNKT_HOA": {
+      "ten": "Công nghệ kỹ thuật hóa học",
+      "ma_hien_hanh": "7510401",
+      "ma_moi": "510401",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    },
+    "KT_HOA": {
+      "ten": "Kỹ thuật hóa học",
+      "ma_hien_hanh": "7520301",
+      "ma_moi": "520301",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "VL": {
+      "ten": "Kỹ thuật vật liệu",
+      "ma_hien_hanh": "7520309",
+      "ma_moi": "520309",
+      "xac_minh_tt74": true,
+      "ghi_chu": ""
+    },
+    "MT": {
+      "ten": "Kỹ thuật môi trường",
+      "ma_hien_hanh": "7520320",
+      "ma_moi": "520320",
+      "xac_minh_tt74": false,
+      "ghi_chu": ""
+    }
+  },
+  "recommendations": {
+    "REC_CNTT_TOP": {
+      "ma_nhom": "NHOM_CNTT",
+      "nganh": [
+        "KHMT",
+        "AI"
+      ],
+      "nhom_truong": "nhóm trường trọng điểm (điểm chuẩn cao)",
+      "mo_ta": ""
+    },
+    "REC_CNTT_UNG_DUNG": {
+      "ma_nhom": "NHOM_CNTT",
+      "nganh": [
+        "KTPM",
+        "HTTT",
+        "CNTT"
+      ],
+      "nhom_truong": "nhóm trường công lập khá và ứng dụng",
+      "mo_ta": ""
+    },
+    "REC_KT_TOP": {
+      "ma_nhom": "NHOM_KY_THUAT",
+      "nganh": [
+        "KT_DKTDH",
+        "CKDT"
+      ],
+      "nhom_truong": "nhóm trường kỹ thuật trọng điểm",
+      "mo_ta": ""
+    },
+    "REC_KT_UNG_DUNG": {
+      "ma_nhom": "NHOM_KY_THUAT",
+      "nganh": [
+        "CKDT",
+        "DDT",
+        "CNKT_DKTDH"
+      ],
+      "nhom_truong": "nhóm trường kỹ thuật công lập khá và ứng dụng",
+      "mo_ta": ""
+    },
+    "REC_KTE_QT_TOP": {
+      "ma_nhom": "NHOM_KINH_TE_QT",
+      "nganh": [
+        "KTQT",
+        "KTDT"
+      ],
+      "nhom_truong": "nhóm trường kinh tế - ngoại thương trọng điểm",
+      "mo_ta": ""
+    },
+    "REC_KTE_QTKD": {
+      "ma_nhom": "NHOM_KINH_TE_QT",
+      "nganh": [
+        "QTKD",
+        "MKT",
+        "TCNH",
+        "KT"
+      ],
+      "nhom_truong": "nhóm trường kinh tế công lập khá và ứng dụng",
+      "mo_ta": ""
+    },
+    "REC_LOGISTICS": {
+      "ma_nhom": "NHOM_LOGISTICS",
+      "nganh": [
+        "LOG"
+      ],
+      "nhom_truong": "trường có chương trình Logistics - tra cứu ADMISSION_REFERENCE",
+      "mo_ta": ""
+    },
+    "REC_YD_TOP": {
+      "ma_nhom": "NHOM_Y_DUOC",
+      "nganh": [
+        "YK",
+        "DUOC"
+      ],
+      "nhom_truong": "trường Y - Dược trọng điểm",
+      "mo_ta": "Nghề y, dược chỉ hành nghề sau khi đáp ứng điều kiện đào tạo, thực hành và chứng chỉ hành nghề."
+    },
+    "REC_YD_CHUNG": {
+      "ma_nhom": "NHOM_Y_DUOC",
+      "nganh": [
+        "DUOC",
+        "DD",
+        "XN",
+        "YHDP"
+      ],
+      "nhom_truong": "trường Y - Dược công lập khá và ứng dụng",
+      "mo_ta": "Nghề y, dược chỉ hành nghề sau khi đáp ứng điều kiện đào tạo, thực hành và chứng chỉ hành nghề."
+    },
+    "REC_SP_TOAN_TIN": {
+      "ma_nhom": "NHOM_SU_PHAM",
+      "nganh": [
+        "SP_TOAN",
+        "SP_TIN"
+      ],
+      "nhom_truong": "trường sư phạm trọng điểm",
+      "mo_ta": ""
+    },
+    "REC_SP_MON": {
+      "ma_nhom": "NHOM_SU_PHAM",
+      "nganh": [
+        "SP_VAN",
+        "SP_NN",
+        "GDTH",
+        "SP_TOAN"
+      ],
+      "nhom_truong": "trường sư phạm (chọn theo môn thế mạnh)",
+      "mo_ta": ""
+    },
+    "REC_PL": {
+      "ma_nhom": "NHOM_PHAP_LUAT",
+      "nganh": [
+        "LUAT",
+        "LUAT_KT"
+      ],
+      "nhom_truong": "trường có khoa Luật",
+      "mo_ta": "Một số nghề luật đòi hỏi đào tạo nghề và chứng chỉ riêng."
+    },
+    "REC_NNXH": {
+      "ma_nhom": "NHOM_NGON_NGU_XH",
+      "nganh": [
+        "NNA",
+        "QHQT",
+        "TLH",
+        "BC"
+      ],
+      "nhom_truong": "trường khoa học xã hội - nhân văn / ngoại ngữ",
+      "mo_ta": ""
+    },
+    "REC_NT_SO": {
+      "ma_nhom": "NHOM_NGHE_THUAT",
+      "nganh": [
+        "TKDH",
+        "NTS"
+      ],
+      "nhom_truong": "trường mỹ thuật ứng dụng và công nghệ",
+      "mo_ta": "Đối chiếu tổ hợp năng khiếu (H00/V00...) do từng trường công bố."
+    },
+    "REC_NT_DOHOA": {
+      "ma_nhom": "NHOM_NGHE_THUAT",
+      "nganh": [
+        "TKDH",
+        "TKTT"
+      ],
+      "nhom_truong": "trường mỹ thuật ứng dụng",
+      "mo_ta": "Đối chiếu tổ hợp năng khiếu (H00/V00...) do từng trường công bố."
+    },
+    "REC_HOA_MT": {
+      "ma_nhom": "NHOM_HOA_MOI_TRUONG",
+      "nganh": [
+        "CNKT_HOA",
+        "KT_HOA",
+        "VL",
+        "MT"
+      ],
+      "nhom_truong": "trường kỹ thuật / khoa học tự nhiên",
+      "mo_ta": ""
+    },
+    "REC_FB_NHOM": {
+      "ma_nhom": null,
+      "nganh": [],
+      "nhom_truong": "",
+      "mo_ta": "dynamic:nhom"
+    },
+    "REC_FB_HOLLAND": {
+      "ma_nhom": null,
+      "nganh": [],
+      "nhom_truong": "",
+      "mo_ta": "dynamic:holland"
+    },
+    "REC_INSUFFICIENT": {
+      "ma_nhom": null,
+      "nganh": [],
+      "nhom_truong": "",
+      "mo_ta": "dynamic:insufficient"
+    }
+  },
+  "holland_hints": {
+    "R_REALISTIC": [
+      "NHOM_KY_THUAT",
+      "NHOM_LOGISTICS"
+    ],
+    "I_INVESTIGATIVE": [
+      "NHOM_CNTT",
+      "NHOM_HOA_MOI_TRUONG",
+      "NHOM_Y_DUOC"
+    ],
+    "A_ARTISTIC": [
+      "NHOM_NGHE_THUAT"
+    ],
+    "S_SOCIAL": [
+      "NHOM_SU_PHAM",
+      "NHOM_NGON_NGU_XH"
+    ],
+    "E_ENTERPRISING": [
+      "NHOM_KINH_TE_QT",
+      "NHOM_PHAP_LUAT"
+    ],
+    "C_CONVENTIONAL": [
+      "NHOM_KINH_TE_QT",
+      "NHOM_LOGISTICS"
+    ]
+  },
+  "combinations": {
+    "A00": [
+      "Diem_Toan",
+      "Diem_Ly",
+      "Diem_Hoa"
+    ],
+    "A01": [
+      "Diem_Toan",
+      "Diem_Ly",
+      "Diem_Anh"
+    ],
+    "B00": [
+      "Diem_Toan",
+      "Diem_Hoa",
+      "Diem_Sinh"
+    ],
+    "C00": [
+      "Diem_Van",
+      "Diem_Su",
+      "Diem_Dia"
+    ],
+    "D01": [
+      "Diem_Toan",
+      "Diem_Van",
+      "Diem_Anh"
+    ],
+    "D07": [
+      "Diem_Toan",
+      "Diem_Hoa",
+      "Diem_Anh"
+    ],
+    "B08": [
+      "Diem_Toan",
+      "Diem_Sinh",
+      "Diem_Anh"
+    ],
+    "X06": [
+      "Diem_Toan",
+      "Diem_Ly",
+      "Diem_Tin"
+    ],
+    "X26": [
+      "Diem_Toan",
+      "Diem_Tin",
+      "Diem_Anh"
+    ]
+  },
+  "rules": [
+    {
+      "id": "R01",
+      "tier": 1,
+      "priority": 95,
+      "cf": 0.95,
+      "conds": [
+        [
+          "ge",
+          "Diem_Toan",
+          8.0
+        ],
+        [
+          "ge",
+          "Diem_Ly",
+          7.5
+        ],
+        [
+          "ge",
+          "Diem_Hoa",
+          7.5
+        ]
+      ],
+      "then": [
+        "The_Manh_Khoi",
+        "KHOI_A00"
+      ],
+      "template": "Toán {Diem_Toan}, Lý {Diem_Ly}, Hóa {Diem_Hoa} đều đạt ngưỡng của luật (Toán ≥ 8,0; Lý, Hóa ≥ 7,5) nên có thế mạnh tổ hợp A00.",
+      "dep_group": null,
+      "if_text": "Diem_Toan >= 8.0 AND Diem_Ly >= 7.5 AND Diem_Hoa >= 7.5",
+      "specificity": 3
+    },
+    {
+      "id": "R02",
+      "tier": 1,
+      "priority": 94,
+      "cf": 0.95,
+      "conds": [
+        [
+          "ge",
+          "Diem_Toan",
+          8.0
+        ],
+        [
+          "ge",
+          "Diem_Ly",
+          7.5
+        ],
+        [
+          "ge",
+          "Diem_Anh",
+          7.5
+        ]
+      ],
+      "then": [
+        "The_Manh_Khoi",
+        "KHOI_A01"
+      ],
+      "template": "Toán {Diem_Toan}, Lý {Diem_Ly}, Anh {Diem_Anh} đạt ngưỡng (Toán ≥ 8,0; Lý, Anh ≥ 7,5) nên có thế mạnh tổ hợp A01.",
+      "dep_group": null,
+      "if_text": "Diem_Toan >= 8.0 AND Diem_Ly >= 7.5 AND Diem_Anh >= 7.5",
+      "specificity": 3
+    },
+    {
+      "id": "R03",
+      "tier": 1,
+      "priority": 93,
+      "cf": 0.95,
+      "conds": [
+        [
+          "ge",
+          "Diem_Toan",
+          7.5
+        ],
+        [
+          "ge",
+          "Diem_Hoa",
+          8.0
+        ],
+        [
+          "ge",
+          "Diem_Sinh",
+          8.0
+        ]
+      ],
+      "then": [
+        "The_Manh_Khoi",
+        "KHOI_B00"
+      ],
+      "template": "Toán {Diem_Toan}, Hóa {Diem_Hoa}, Sinh {Diem_Sinh} đạt ngưỡng (Toán ≥ 7,5; Hóa, Sinh ≥ 8,0) nên có thế mạnh tổ hợp B00.",
+      "dep_group": null,
+      "if_text": "Diem_Toan >= 7.5 AND Diem_Hoa >= 8.0 AND Diem_Sinh >= 8.0",
+      "specificity": 3
+    },
+    {
+      "id": "R04",
+      "tier": 1,
+      "priority": 92,
+      "cf": 0.9,
+      "conds": [
+        [
+          "ge",
+          "Diem_Van",
+          8.0
+        ],
+        [
+          "ge",
+          "Diem_Su",
+          7.5
+        ],
+        [
+          "ge",
+          "Diem_Dia",
+          7.5
+        ]
+      ],
+      "then": [
+        "The_Manh_Khoi",
+        "KHOI_C00"
+      ],
+      "template": "Văn {Diem_Van}, Sử {Diem_Su}, Địa {Diem_Dia} đạt ngưỡng (Văn ≥ 8,0; Sử, Địa ≥ 7,5) nên có thế mạnh tổ hợp C00.",
+      "dep_group": null,
+      "if_text": "Diem_Van >= 8.0 AND Diem_Su >= 7.5 AND Diem_Dia >= 7.5",
+      "specificity": 3
+    },
+    {
+      "id": "R05",
+      "tier": 1,
+      "priority": 91,
+      "cf": 0.92,
+      "conds": [
+        [
+          "ge",
+          "Diem_Toan",
+          7.5
+        ],
+        [
+          "ge",
+          "Diem_Van",
+          7.5
+        ],
+        [
+          "ge",
+          "Diem_Anh",
+          8.0
+        ]
+      ],
+      "then": [
+        "The_Manh_Khoi",
+        "KHOI_D01"
+      ],
+      "template": "Toán {Diem_Toan}, Văn {Diem_Van}, Anh {Diem_Anh} đạt ngưỡng (Toán, Văn ≥ 7,5; Anh ≥ 8,0) nên có thế mạnh tổ hợp D01.",
+      "dep_group": null,
+      "if_text": "Diem_Toan >= 7.5 AND Diem_Van >= 7.5 AND Diem_Anh >= 8.0",
+      "specificity": 3
+    },
+    {
+      "id": "R06",
+      "tier": 1,
+      "priority": 90,
+      "cf": 0.9,
+      "conds": [
+        [
+          "ge",
+          "Diem_Ve",
+          8.0
+        ],
+        [
+          "ge",
+          "Diem_Van",
+          7.0
+        ]
+      ],
+      "then": [
+        "The_Manh_Khoi",
+        "KHOI_H00"
+      ],
+      "template": "Vẽ {Diem_Ve} (≥ 8,0) và Văn {Diem_Van} (≥ 7,0) phù hợp hướng tổ hợp năng khiếu H00. Cần đối chiếu môn năng khiếu thực tế của từng trường.",
+      "dep_group": null,
+      "if_text": "Diem_Ve >= 8.0 AND Diem_Van >= 7.0",
+      "specificity": 2
+    },
+    {
+      "id": "R31",
+      "tier": 1,
+      "priority": 90,
+      "cf": 0.9,
+      "conds": [
+        [
+          "ge",
+          "Diem_Ve",
+          8.0
+        ],
+        [
+          "ge",
+          "Diem_Toan",
+          7.0
+        ],
+        [
+          "ge",
+          "Diem_Ly",
+          7.0
+        ]
+      ],
+      "then": [
+        "The_Manh_Khoi",
+        "KHOI_V00"
+      ],
+      "template": "Vẽ {Diem_Ve} (≥ 8,0), Toán {Diem_Toan} và Lý {Diem_Ly} (≥ 7,0) phù hợp hướng tổ hợp năng khiếu V00. Cần đối chiếu quy định của từng trường.",
+      "dep_group": null,
+      "if_text": "Diem_Ve >= 8.0 AND Diem_Toan >= 7.0 AND Diem_Ly >= 7.0",
+      "specificity": 3
+    },
+    {
+      "id": "R07",
+      "tier": 1,
+      "priority": 89,
+      "cf": 0.9,
+      "conds": [
+        [
+          "has",
+          "So_Thich",
+          "May_Moc"
+        ],
+        [
+          "eq",
+          "Nang_Luc_Noi_Troi",
+          "Thao_Tac_Ky_Thuat"
+        ]
+      ],
+      "then": [
+        "Ma_Holland",
+        "R_REALISTIC"
+      ],
+      "template": "Sở thích máy móc kết hợp năng lực thao tác kỹ thuật gợi ý thiên hướng Thực tế (R) theo mô hình Holland (tham khảo, không phải trắc nghiệm chuẩn).",
+      "dep_group": null,
+      "if_text": "\"May_Moc\" IN So_Thich AND Nang_Luc_Noi_Troi == \"Thao_Tac_Ky_Thuat\"",
+      "specificity": 2
+    },
+    {
+      "id": "R08",
+      "tier": 1,
+      "priority": 88,
+      "cf": 0.9,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "So_Thich",
+              "Nghien_Cuu"
+            ],
+            [
+              "has",
+              "So_Thich",
+              "Lap_Trinh"
+            ]
+          ]
+        ],
+        [
+          "eq",
+          "Nang_Luc_Noi_Troi",
+          "Tu_Duy_Logic"
+        ]
+      ],
+      "then": [
+        "Ma_Holland",
+        "I_INVESTIGATIVE"
+      ],
+      "template": "Sở thích nghiên cứu/lập trình ({So_Thich}) và năng lực tư duy logic gợi ý thiên hướng Nghiên cứu (I) theo Holland (tham khảo).",
+      "dep_group": null,
+      "if_text": "(\"Nghien_Cuu\" IN So_Thich OR \"Lap_Trinh\" IN So_Thich) AND Nang_Luc_Noi_Troi == \"Tu_Duy_Logic\"",
+      "specificity": 3
+    },
+    {
+      "id": "R09",
+      "tier": 1,
+      "priority": 87,
+      "cf": 0.88,
+      "conds": [
+        [
+          "has",
+          "So_Thich",
+          "Sang_Tao"
+        ],
+        [
+          "eq",
+          "Nang_Luc_Noi_Troi",
+          "Tham_My_Nghe_Thuat"
+        ]
+      ],
+      "then": [
+        "Ma_Holland",
+        "A_ARTISTIC"
+      ],
+      "template": "Sở thích sáng tạo kết hợp năng lực thẩm mỹ - nghệ thuật gợi ý thiên hướng Nghệ thuật (A) theo Holland (tham khảo).",
+      "dep_group": null,
+      "if_text": "\"Sang_Tao\" IN So_Thich AND Nang_Luc_Noi_Troi == \"Tham_My_Nghe_Thuat\"",
+      "specificity": 2
+    },
+    {
+      "id": "R10",
+      "tier": 1,
+      "priority": 86,
+      "cf": 0.88,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "So_Thich",
+              "Giang_Day"
+            ],
+            [
+              "has",
+              "So_Thich",
+              "Giao_Tiep"
+            ],
+            [
+              "has",
+              "So_Thich",
+              "Cham_Soc_Suc_Khoe"
+            ]
+          ]
+        ],
+        [
+          "eq",
+          "Nang_Luc_Noi_Troi",
+          "Ngon_Ngu_Dien_Dat"
+        ]
+      ],
+      "then": [
+        "Ma_Holland",
+        "S_SOCIAL"
+      ],
+      "template": "Sở thích giao tiếp/giảng dạy/chăm sóc ({So_Thich}) và khả năng diễn đạt tốt gợi ý thiên hướng Xã hội (S) theo Holland (tham khảo).",
+      "dep_group": null,
+      "if_text": "(\"Giang_Day\" IN So_Thich OR \"Giao_Tiep\" IN So_Thich OR \"Cham_Soc_Suc_Khoe\" IN So_Thich) AND Nang_Luc_Noi_Troi == \"Ngon_Ngu_Dien_Dat\"",
+      "specificity": 4
+    },
+    {
+      "id": "R11",
+      "tier": 1,
+      "priority": 85,
+      "cf": 0.88,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "So_Thich",
+              "Kinh_Doanh"
+            ],
+            [
+              "has",
+              "So_Thich",
+              "Tranh_Bien_Luat"
+            ]
+          ]
+        ],
+        [
+          "eq",
+          "Nang_Luc_Noi_Troi",
+          "To_Chuc_Lanh_Dao"
+        ]
+      ],
+      "then": [
+        "Ma_Holland",
+        "E_ENTERPRISING"
+      ],
+      "template": "Sở thích kinh doanh/tranh biện ({So_Thich}) và năng lực tổ chức - lãnh đạo gợi ý thiên hướng Quản lý (E) theo Holland (tham khảo).",
+      "dep_group": null,
+      "if_text": "(\"Kinh_Doanh\" IN So_Thich OR \"Tranh_Bien_Luat\" IN So_Thich) AND Nang_Luc_Noi_Troi == \"To_Chuc_Lanh_Dao\"",
+      "specificity": 3
+    },
+    {
+      "id": "R12",
+      "tier": 1,
+      "priority": 84,
+      "cf": 0.85,
+      "conds": [
+        [
+          "has",
+          "So_Thich",
+          "Con_So_Du_Lieu"
+        ],
+        [
+          "eq",
+          "Nang_Luc_Noi_Troi",
+          "Phan_Tich_Chi_Tiet"
+        ]
+      ],
+      "then": [
+        "Ma_Holland",
+        "C_CONVENTIONAL"
+      ],
+      "template": "Sở thích làm việc với dữ liệu, con số và năng lực phân tích chi tiết gợi ý thiên hướng Nghiệp vụ (C) theo Holland (tham khảo).",
+      "dep_group": null,
+      "if_text": "\"Con_So_Du_Lieu\" IN So_Thich AND Nang_Luc_Noi_Troi == \"Phan_Tich_Chi_Tiet\"",
+      "specificity": 2
+    },
+    {
+      "id": "R13",
+      "tier": 1,
+      "priority": 83,
+      "cf": 0.95,
+      "conds": [
+        [
+          "ge",
+          "Tong_Diem_Du_Kien",
+          26.5
+        ]
+      ],
+      "then": [
+        "Phan_Khuc_Diem",
+        "TOP_DAU"
+      ],
+      "template": "Tổng điểm dự kiến {Tong} (tổ hợp {To_Hop}) ≥ 26,5 nên xếp phân khúc TOP_DAU (ngưỡng mô phỏng của nhóm, không phải ngưỡng tuyển sinh).",
+      "dep_group": null,
+      "if_text": "Tong_Diem_Du_Kien >= 26.5",
+      "specificity": 1
+    },
+    {
+      "id": "R14",
+      "tier": 1,
+      "priority": 82,
+      "cf": 0.95,
+      "conds": [
+        [
+          "ge",
+          "Tong_Diem_Du_Kien",
+          23.0
+        ],
+        [
+          "lt",
+          "Tong_Diem_Du_Kien",
+          26.5
+        ]
+      ],
+      "then": [
+        "Phan_Khuc_Diem",
+        "KHA_TOT"
+      ],
+      "template": "Tổng điểm dự kiến {Tong} (tổ hợp {To_Hop}) trong [23,0; 26,5) nên xếp phân khúc KHA_TOT (ngưỡng mô phỏng của nhóm).",
+      "dep_group": null,
+      "if_text": "Tong_Diem_Du_Kien >= 23.0 AND Tong_Diem_Du_Kien < 26.5",
+      "specificity": 2
+    },
+    {
+      "id": "R15",
+      "tier": 1,
+      "priority": 81,
+      "cf": 0.95,
+      "conds": [
+        [
+          "lt",
+          "Tong_Diem_Du_Kien",
+          23.0
+        ]
+      ],
+      "then": [
+        "Phan_Khuc_Diem",
+        "AN_TOAN"
+      ],
+      "template": "Tổng điểm dự kiến {Tong} (tổ hợp {To_Hop}) < 23,0 nên xếp phân khúc AN_TOAN (ngưỡng mô phỏng của nhóm).",
+      "dep_group": null,
+      "if_text": "Tong_Diem_Du_Kien < 23.0",
+      "specificity": 1
+    },
+    {
+      "id": "R16",
+      "tier": 2,
+      "priority": 78,
+      "cf": 0.9,
+      "conds": [
+        [
+          "has",
+          "The_Manh_Khoi",
+          "KHOI_A00"
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "I_INVESTIGATIVE"
+        ],
+        [
+          "ge",
+          "Diem_Tin",
+          8.0
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_CNTT"
+      ],
+      "template": "Thế mạnh khối A00, thiên hướng Nghiên cứu (I) và Tin học {Diem_Tin} (≥ 8,0) cùng chỉ về nhóm Máy tính và CNTT.",
+      "dep_group": "CNTT_I",
+      "if_text": "\"KHOI_A00\" IN The_Manh_Khoi AND \"I_INVESTIGATIVE\" IN Ma_Holland AND Diem_Tin >= 8.0",
+      "specificity": 3
+    },
+    {
+      "id": "R17",
+      "tier": 2,
+      "priority": 77,
+      "cf": 0.85,
+      "conds": [
+        [
+          "has",
+          "The_Manh_Khoi",
+          "KHOI_A01"
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "I_INVESTIGATIVE"
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Lap_Trinh"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_CNTT"
+      ],
+      "template": "Thế mạnh khối A01, thiên hướng Nghiên cứu (I) và sở thích lập trình củng cố sự phù hợp với nhóm Máy tính và CNTT.",
+      "dep_group": "CNTT_I",
+      "if_text": "\"KHOI_A01\" IN The_Manh_Khoi AND \"I_INVESTIGATIVE\" IN Ma_Holland AND \"Lap_Trinh\" IN So_Thich",
+      "specificity": 3
+    },
+    {
+      "id": "R21",
+      "tier": 2,
+      "priority": 76,
+      "cf": 0.92,
+      "conds": [
+        [
+          "has",
+          "The_Manh_Khoi",
+          "KHOI_B00"
+        ],
+        [
+          "any",
+          [
+            [
+              "has",
+              "Ma_Holland",
+              "I_INVESTIGATIVE"
+            ],
+            [
+              "has",
+              "Ma_Holland",
+              "S_SOCIAL"
+            ]
+          ]
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Cham_Soc_Suc_Khoe"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_Y_DUOC"
+      ],
+      "template": "Thế mạnh khối B00, thiên hướng Nghiên cứu/Xã hội và sở thích chăm sóc sức khỏe gợi ý nhóm Khoa học sức khỏe.",
+      "dep_group": null,
+      "if_text": "\"KHOI_B00\" IN The_Manh_Khoi AND (\"I_INVESTIGATIVE\" IN Ma_Holland OR \"S_SOCIAL\" IN Ma_Holland) AND \"Cham_Soc_Suc_Khoe\" IN So_Thich",
+      "specificity": 4
+    },
+    {
+      "id": "R18",
+      "tier": 2,
+      "priority": 75,
+      "cf": 0.88,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_A00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_A01"
+            ]
+          ]
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "R_REALISTIC"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_KY_THUAT"
+      ],
+      "template": "Thế mạnh Toán - Lý (A00/A01) kết hợp thiên hướng Thực tế (R) phù hợp nhóm Kỹ thuật và Công nghệ kỹ thuật.",
+      "dep_group": null,
+      "if_text": "(\"KHOI_A00\" IN The_Manh_Khoi OR \"KHOI_A01\" IN The_Manh_Khoi) AND \"R_REALISTIC\" IN Ma_Holland",
+      "specificity": 3
+    },
+    {
+      "id": "R19",
+      "tier": 2,
+      "priority": 74,
+      "cf": 0.85,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_A01"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_D01"
+            ]
+          ]
+        ],
+        [
+          "any",
+          [
+            [
+              "has",
+              "Ma_Holland",
+              "E_ENTERPRISING"
+            ],
+            [
+              "has",
+              "Ma_Holland",
+              "C_CONVENTIONAL"
+            ]
+          ]
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_KINH_TE_QT"
+      ],
+      "template": "Nền tảng Toán - Anh (A01/D01) cùng thiên hướng Quản lý (E) hoặc Nghiệp vụ (C) phù hợp nhóm Kinh tế, Kinh doanh và Quản lý.",
+      "dep_group": null,
+      "if_text": "(\"KHOI_A01\" IN The_Manh_Khoi OR \"KHOI_D01\" IN The_Manh_Khoi) AND (\"E_ENTERPRISING\" IN Ma_Holland OR \"C_CONVENTIONAL\" IN Ma_Holland)",
+      "specificity": 4
+    },
+    {
+      "id": "R20",
+      "tier": 2,
+      "priority": 73,
+      "cf": 0.86,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_A00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_A01"
+            ]
+          ]
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "C_CONVENTIONAL"
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Kinh_Doanh"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_LOGISTICS"
+      ],
+      "template": "Tư duy Toán khối A, thiên hướng Nghiệp vụ (C) và hứng thú kinh doanh gợi ý nhóm Logistics và Chuỗi cung ứng.",
+      "dep_group": null,
+      "if_text": "(\"KHOI_A00\" IN The_Manh_Khoi OR \"KHOI_A01\" IN The_Manh_Khoi) AND \"C_CONVENTIONAL\" IN Ma_Holland AND \"Kinh_Doanh\" IN So_Thich",
+      "specificity": 4
+    },
+    {
+      "id": "R22",
+      "tier": 2,
+      "priority": 72,
+      "cf": 0.88,
+      "conds": [
+        [
+          "has",
+          "Ma_Holland",
+          "S_SOCIAL"
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Giang_Day"
+        ],
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_A00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_C00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_D01"
+            ]
+          ]
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_SU_PHAM"
+      ],
+      "template": "Đam mê giảng dạy, thiên hướng Xã hội (S) trên nền học thuật khối A00/C00/D01 phù hợp nhóm Giáo dục và Sư phạm.",
+      "dep_group": null,
+      "if_text": "\"S_SOCIAL\" IN Ma_Holland AND \"Giang_Day\" IN So_Thich AND (\"KHOI_A00\" IN The_Manh_Khoi OR \"KHOI_C00\" IN The_Manh_Khoi OR \"KHOI_D01\" IN The_Manh_Khoi)",
+      "specificity": 5
+    },
+    {
+      "id": "R32",
+      "tier": 2,
+      "priority": 71,
+      "cf": 0.87,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_D01"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_C00"
+            ]
+          ]
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "S_SOCIAL"
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Giao_Tiep"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_NGON_NGU_XH"
+      ],
+      "template": "Thế mạnh D01/C00, thiên hướng Xã hội (S) và sở thích giao tiếp phù hợp nhóm Ngôn ngữ, Nhân văn và Khoa học xã hội.",
+      "dep_group": null,
+      "if_text": "(\"KHOI_D01\" IN The_Manh_Khoi OR \"KHOI_C00\" IN The_Manh_Khoi) AND \"S_SOCIAL\" IN Ma_Holland AND \"Giao_Tiep\" IN So_Thich",
+      "specificity": 4
+    },
+    {
+      "id": "R23",
+      "tier": 2,
+      "priority": 70,
+      "cf": 0.87,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_C00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_D01"
+            ]
+          ]
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "E_ENTERPRISING"
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Tranh_Bien_Luat"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_PHAP_LUAT"
+      ],
+      "template": "Năng lực lập luận khối C00/D01, thiên hướng Quản lý (E) và sở thích tranh biện phù hợp nhóm Pháp luật.",
+      "dep_group": null,
+      "if_text": "(\"KHOI_C00\" IN The_Manh_Khoi OR \"KHOI_D01\" IN The_Manh_Khoi) AND \"E_ENTERPRISING\" IN Ma_Holland AND \"Tranh_Bien_Luat\" IN So_Thich",
+      "specificity": 4
+    },
+    {
+      "id": "R33",
+      "tier": 2,
+      "priority": 69,
+      "cf": 0.88,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_A00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_B00"
+            ]
+          ]
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "I_INVESTIGATIVE"
+        ],
+        [
+          "ge",
+          "Diem_Hoa",
+          8.0
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Nghien_Cuu"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_HOA_MOI_TRUONG"
+      ],
+      "template": "Khối A00/B00, thiên hướng Nghiên cứu (I), Hóa {Diem_Hoa} (≥ 8,0) và sở thích nghiên cứu phù hợp nhóm Hóa học, Vật liệu và Môi trường.",
+      "dep_group": null,
+      "if_text": "(\"KHOI_A00\" IN The_Manh_Khoi OR \"KHOI_B00\" IN The_Manh_Khoi) AND \"I_INVESTIGATIVE\" IN Ma_Holland AND Diem_Hoa >= 8.0 AND \"Nghien_Cuu\" IN So_Thich",
+      "specificity": 5
+    },
+    {
+      "id": "R24",
+      "tier": 2,
+      "priority": 68,
+      "cf": 0.88,
+      "conds": [
+        [
+          "any",
+          [
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_H00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_V00"
+            ],
+            [
+              "has",
+              "The_Manh_Khoi",
+              "KHOI_D01"
+            ]
+          ]
+        ],
+        [
+          "has",
+          "Ma_Holland",
+          "A_ARTISTIC"
+        ]
+      ],
+      "then": [
+        "Nhom_Nganh_Phu_Hop",
+        "NHOM_NGHE_THUAT"
+      ],
+      "template": "Thiên hướng Nghệ thuật (A) cùng thế mạnh H00/V00/D01 phù hợp nhóm Nghệ thuật và Mỹ thuật ứng dụng.",
+      "dep_group": null,
+      "if_text": "(\"KHOI_H00\" IN The_Manh_Khoi OR \"KHOI_V00\" IN The_Manh_Khoi OR \"KHOI_D01\" IN The_Manh_Khoi) AND \"A_ARTISTIC\" IN Ma_Holland",
+      "specificity": 4
+    },
+    {
+      "id": "R25",
+      "tier": 3,
+      "priority": 60,
+      "cf": 0.95,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_CNTT"
+        ],
+        [
+          "eq",
+          "Phan_Khuc_Diem",
+          "TOP_DAU"
+        ],
+        [
+          "ge",
+          "Diem_Toan",
+          9.0
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_CNTT_TOP"
+      ],
+      "template": "Nhóm CNTT, phân khúc TOP_DAU và Toán {Diem_Toan} (≥ 9,0) cho phép cân nhắc ngành mũi nhọn Khoa học máy tính, Trí tuệ nhân tạo ở nhóm trường điểm cao.",
+      "dep_group": null,
+      "if_text": "\"NHOM_CNTT\" IN Nhom_Nganh_Phu_Hop AND Phan_Khuc_Diem == \"TOP_DAU\" AND Diem_Toan >= 9.0",
+      "specificity": 3
+    },
+    {
+      "id": "R34",
+      "tier": 3,
+      "priority": 59,
+      "cf": 0.9,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_LOGISTICS"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_LOGISTICS"
+      ],
+      "template": "Phù hợp nhóm Logistics và Quản lý chuỗi cung ứng, gợi ý ngành Logistics và Quản lý chuỗi cung ứng.",
+      "dep_group": null,
+      "if_text": "\"NHOM_LOGISTICS\" IN Nhom_Nganh_Phu_Hop",
+      "specificity": 1
+    },
+    {
+      "id": "R26",
+      "tier": 3,
+      "priority": 58,
+      "cf": 0.9,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_CNTT"
+        ],
+        [
+          "not",
+          [
+            "all",
+            [
+              [
+                "eq",
+                "Phan_Khuc_Diem",
+                "TOP_DAU"
+              ],
+              [
+                "ge",
+                "Diem_Toan",
+                9.0
+              ]
+            ]
+          ]
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_CNTT_UNG_DUNG"
+      ],
+      "template": "Phù hợp nhóm CNTT; với mức điểm hiện tại, gợi ý Kỹ thuật phần mềm, Hệ thống thông tin, Công nghệ thông tin ở nhóm trường công lập khá và ứng dụng.",
+      "dep_group": null,
+      "if_text": "\"NHOM_CNTT\" IN Nhom_Nganh_Phu_Hop AND NOT (Phan_Khuc_Diem == \"TOP_DAU\" AND Diem_Toan >= 9.0)",
+      "specificity": 3
+    },
+    {
+      "id": "R35",
+      "tier": 3,
+      "priority": 57,
+      "cf": 0.92,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_Y_DUOC"
+        ],
+        [
+          "eq",
+          "Phan_Khuc_Diem",
+          "TOP_DAU"
+        ],
+        [
+          "ge",
+          "Diem_Hoa",
+          8.5
+        ],
+        [
+          "ge",
+          "Diem_Sinh",
+          8.5
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_YD_TOP"
+      ],
+      "template": "Nhóm Sức khỏe, phân khúc TOP_DAU, Hóa {Diem_Hoa} và Sinh {Diem_Sinh} (≥ 8,5) cho phép cân nhắc Y khoa, Dược học.",
+      "dep_group": null,
+      "if_text": "\"NHOM_Y_DUOC\" IN Nhom_Nganh_Phu_Hop AND Phan_Khuc_Diem == \"TOP_DAU\" AND Diem_Hoa >= 8.5 AND Diem_Sinh >= 8.5",
+      "specificity": 4
+    },
+    {
+      "id": "R27",
+      "tier": 3,
+      "priority": 56,
+      "cf": 0.92,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_KY_THUAT"
+        ],
+        [
+          "eq",
+          "Phan_Khuc_Diem",
+          "TOP_DAU"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_KT_TOP"
+      ],
+      "template": "Nhóm Kỹ thuật và phân khúc TOP_DAU cho phép cân nhắc Kỹ thuật điều khiển và tự động hóa, Cơ điện tử ở nhóm trường kỹ thuật trọng điểm.",
+      "dep_group": null,
+      "if_text": "\"NHOM_KY_THUAT\" IN Nhom_Nganh_Phu_Hop AND Phan_Khuc_Diem == \"TOP_DAU\"",
+      "specificity": 2
+    },
+    {
+      "id": "R37",
+      "tier": 3,
+      "priority": 55,
+      "cf": 0.88,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_PHAP_LUAT"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_PL"
+      ],
+      "template": "Phù hợp nhóm Pháp luật, gợi ý ngành Luật, Luật kinh tế. Một số nghề luật cần chứng chỉ riêng sau đào tạo.",
+      "dep_group": null,
+      "if_text": "\"NHOM_PHAP_LUAT\" IN Nhom_Nganh_Phu_Hop",
+      "specificity": 1
+    },
+    {
+      "id": "R28",
+      "tier": 3,
+      "priority": 54,
+      "cf": 0.92,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_KINH_TE_QT"
+        ],
+        [
+          "eq",
+          "Phan_Khuc_Diem",
+          "TOP_DAU"
+        ],
+        [
+          "ge",
+          "Diem_Anh",
+          8.5
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_KTE_QT_TOP"
+      ],
+      "template": "Nhóm Kinh tế, phân khúc TOP_DAU và Anh {Diem_Anh} (≥ 8,5) cho phép cân nhắc Kinh tế quốc tế, Kinh tế đầu tư ở nhóm trường kinh tế trọng điểm.",
+      "dep_group": null,
+      "if_text": "\"NHOM_KINH_TE_QT\" IN Nhom_Nganh_Phu_Hop AND Phan_Khuc_Diem == \"TOP_DAU\" AND Diem_Anh >= 8.5",
+      "specificity": 3
+    },
+    {
+      "id": "R38",
+      "tier": 3,
+      "priority": 53,
+      "cf": 0.86,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_NGON_NGU_XH"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_NNXH"
+      ],
+      "template": "Phù hợp nhóm Ngôn ngữ, Nhân văn và Khoa học xã hội, gợi ý Ngôn ngữ Anh, Quan hệ quốc tế, Tâm lý học, Báo chí.",
+      "dep_group": null,
+      "if_text": "\"NHOM_NGON_NGU_XH\" IN Nhom_Nganh_Phu_Hop",
+      "specificity": 1
+    },
+    {
+      "id": "R41",
+      "tier": 3,
+      "priority": 52,
+      "cf": 0.85,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_KINH_TE_QT"
+        ],
+        [
+          "not",
+          [
+            "all",
+            [
+              [
+                "eq",
+                "Phan_Khuc_Diem",
+                "TOP_DAU"
+              ],
+              [
+                "ge",
+                "Diem_Anh",
+                8.5
+              ]
+            ]
+          ]
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_KTE_QTKD"
+      ],
+      "template": "Phù hợp nhóm Kinh tế; gợi ý Quản trị kinh doanh, Marketing, Tài chính - Ngân hàng, Kế toán ở nhóm trường công lập khá và ứng dụng.",
+      "dep_group": null,
+      "if_text": "\"NHOM_KINH_TE_QT\" IN Nhom_Nganh_Phu_Hop AND NOT (Phan_Khuc_Diem == \"TOP_DAU\" AND Diem_Anh >= 8.5)",
+      "specificity": 3
+    },
+    {
+      "id": "R39",
+      "tier": 3,
+      "priority": 51,
+      "cf": 0.87,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_HOA_MOI_TRUONG"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_HOA_MT"
+      ],
+      "template": "Phù hợp nhóm Hóa học, Vật liệu và Môi trường, gợi ý Công nghệ kỹ thuật hóa học, Kỹ thuật vật liệu, Kỹ thuật môi trường.",
+      "dep_group": null,
+      "if_text": "\"NHOM_HOA_MOI_TRUONG\" IN Nhom_Nganh_Phu_Hop",
+      "specificity": 1
+    },
+    {
+      "id": "R29",
+      "tier": 3,
+      "priority": 50,
+      "cf": 0.9,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_SU_PHAM"
+        ],
+        [
+          "ge",
+          "Diem_Toan",
+          8.5
+        ],
+        [
+          "any",
+          [
+            [
+              "eq",
+              "Phan_Khuc_Diem",
+              "TOP_DAU"
+            ],
+            [
+              "eq",
+              "Phan_Khuc_Diem",
+              "KHA_TOT"
+            ]
+          ]
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_SP_TOAN_TIN"
+      ],
+      "template": "Thiên hướng Sư phạm, Toán {Diem_Toan} (≥ 8,5) và phân khúc khá trở lên phù hợp Sư phạm Toán học, Sư phạm Tin học.",
+      "dep_group": null,
+      "if_text": "\"NHOM_SU_PHAM\" IN Nhom_Nganh_Phu_Hop AND Diem_Toan >= 8.5 AND (Phan_Khuc_Diem == \"TOP_DAU\" OR Phan_Khuc_Diem == \"KHA_TOT\")",
+      "specificity": 4
+    },
+    {
+      "id": "R40",
+      "tier": 3,
+      "priority": 49,
+      "cf": 0.88,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_KY_THUAT"
+        ],
+        [
+          "not",
+          [
+            "eq",
+            "Phan_Khuc_Diem",
+            "TOP_DAU"
+          ]
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_KT_UNG_DUNG"
+      ],
+      "template": "Phù hợp nhóm Kỹ thuật; gợi ý Cơ điện tử, Điện - Điện tử, Điều khiển và tự động hóa ở nhóm trường công lập khá và ứng dụng.",
+      "dep_group": null,
+      "if_text": "\"NHOM_KY_THUAT\" IN Nhom_Nganh_Phu_Hop AND NOT (Phan_Khuc_Diem == \"TOP_DAU\")",
+      "specificity": 2
+    },
+    {
+      "id": "R30",
+      "tier": 3,
+      "priority": 48,
+      "cf": 0.91,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_NGHE_THUAT"
+        ],
+        [
+          "has",
+          "So_Thich",
+          "Lap_Trinh"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_NT_SO"
+      ],
+      "template": "Nhóm Nghệ thuật kết hợp hứng thú lập trình/công nghệ dẫn tới Thiết kế đồ họa và Nghệ thuật số.",
+      "dep_group": null,
+      "if_text": "\"NHOM_NGHE_THUAT\" IN Nhom_Nganh_Phu_Hop AND \"Lap_Trinh\" IN So_Thich",
+      "specificity": 2
+    },
+    {
+      "id": "R36",
+      "tier": 3,
+      "priority": 47,
+      "cf": 0.85,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_Y_DUOC"
+        ],
+        [
+          "not",
+          [
+            "all",
+            [
+              [
+                "eq",
+                "Phan_Khuc_Diem",
+                "TOP_DAU"
+              ],
+              [
+                "ge",
+                "Diem_Hoa",
+                8.5
+              ],
+              [
+                "ge",
+                "Diem_Sinh",
+                8.5
+              ]
+            ]
+          ]
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_YD_CHUNG"
+      ],
+      "template": "Phù hợp nhóm Sức khỏe; gợi ý Dược học, Điều dưỡng, Kỹ thuật xét nghiệm y học, Y học dự phòng. Nghề y, dược cần điều kiện hành nghề.",
+      "dep_group": null,
+      "if_text": "\"NHOM_Y_DUOC\" IN Nhom_Nganh_Phu_Hop AND NOT (Phan_Khuc_Diem == \"TOP_DAU\" AND Diem_Hoa >= 8.5 AND Diem_Sinh >= 8.5)",
+      "specificity": 4
+    },
+    {
+      "id": "R43",
+      "tier": 3,
+      "priority": 46,
+      "cf": 0.85,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_NGHE_THUAT"
+        ],
+        [
+          "not",
+          [
+            "has",
+            "So_Thich",
+            "Lap_Trinh"
+          ]
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_NT_DOHOA"
+      ],
+      "template": "Phù hợp nhóm Nghệ thuật; gợi ý Thiết kế đồ họa, Thiết kế thời trang. Cần đối chiếu tổ hợp năng khiếu của trường.",
+      "dep_group": null,
+      "if_text": "\"NHOM_NGHE_THUAT\" IN Nhom_Nganh_Phu_Hop AND NOT (\"Lap_Trinh\" IN So_Thich)",
+      "specificity": 2
+    },
+    {
+      "id": "R42",
+      "tier": 3,
+      "priority": 45,
+      "cf": 0.85,
+      "conds": [
+        [
+          "has",
+          "Nhom_Nganh_Phu_Hop",
+          "NHOM_SU_PHAM"
+        ],
+        [
+          "not",
+          [
+            "all",
+            [
+              [
+                "ge",
+                "Diem_Toan",
+                8.5
+              ],
+              [
+                "any",
+                [
+                  [
+                    "eq",
+                    "Phan_Khuc_Diem",
+                    "TOP_DAU"
+                  ],
+                  [
+                    "eq",
+                    "Phan_Khuc_Diem",
+                    "KHA_TOT"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_SP_MON"
+      ],
+      "template": "Phù hợp nhóm Sư phạm; gợi ý chọn ngành sư phạm theo môn thế mạnh (Ngữ văn, Tiếng Anh, Giáo dục Tiểu học, Toán).",
+      "dep_group": null,
+      "if_text": "\"NHOM_SU_PHAM\" IN Nhom_Nganh_Phu_Hop AND NOT (Diem_Toan >= 8.5 AND (Phan_Khuc_Diem == \"TOP_DAU\" OR Phan_Khuc_Diem == \"KHA_TOT\"))",
+      "specificity": 4
+    },
+    {
+      "id": "R44",
+      "tier": 4,
+      "priority": 10,
+      "cf": 0.4,
+      "conds": [
+        [
+          "empty",
+          "Khuyen_Nghi_Chinh_Thuc"
+        ],
+        [
+          "exists",
+          "Nhom_Nganh_Phu_Hop"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_FB_NHOM"
+      ],
+      "template": "Đã xác định nhóm ngành phù hợp nhưng chưa đủ dữ liệu điểm/tổ hợp để chốt ngành cụ thể; chỉ nêu hướng nhóm ngành tham khảo.",
+      "dep_group": null,
+      "if_text": "NOT EXISTS Khuyen_Nghi_Chinh_Thuc AND EXISTS Nhom_Nganh_Phu_Hop",
+      "specificity": 2
+    },
+    {
+      "id": "R45",
+      "tier": 4,
+      "priority": 9,
+      "cf": 0.35,
+      "conds": [
+        [
+          "empty",
+          "Khuyen_Nghi_Chinh_Thuc"
+        ],
+        [
+          "empty",
+          "Nhom_Nganh_Phu_Hop"
+        ],
+        [
+          "exists",
+          "Ma_Holland"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_FB_HOLLAND"
+      ],
+      "template": "Chưa có thế mạnh khối hay nhóm ngành đủ căn cứ; chỉ gợi ý hướng theo thiên hướng Holland ({Holland}) ở mức tham khảo thấp.",
+      "dep_group": null,
+      "if_text": "NOT EXISTS Khuyen_Nghi_Chinh_Thuc AND NOT EXISTS Nhom_Nganh_Phu_Hop AND EXISTS Ma_Holland",
+      "specificity": 3
+    },
+    {
+      "id": "R46",
+      "tier": 4,
+      "priority": 8,
+      "cf": 0.2,
+      "conds": [
+        [
+          "empty",
+          "Khuyen_Nghi_Chinh_Thuc"
+        ],
+        [
+          "empty",
+          "Nhom_Nganh_Phu_Hop"
+        ],
+        [
+          "empty",
+          "Ma_Holland"
+        ]
+      ],
+      "then": [
+        "Khuyen_Nghi_Chinh_Thuc",
+        "REC_INSUFFICIENT"
+      ],
+      "template": "Dữ liệu hiện có chưa đủ căn cứ để đưa ra khuyến nghị; cần bổ sung điểm, sở thích hoặc năng lực nổi trội.",
+      "dep_group": null,
+      "if_text": "NOT EXISTS Khuyen_Nghi_Chinh_Thuc AND NOT EXISTS Nhom_Nganh_Phu_Hop AND NOT EXISTS Ma_Holland",
+      "specificity": 3
+    }
+  ]
+}

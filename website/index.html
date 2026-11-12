@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+	<head>
+		<title>La Bàn Ngành Nghề | Hệ chuyên gia tư vấn chọn ngành cho học sinh THPT</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Hệ chuyên gia tư vấn hướng nghiệp minh bạch cho học sinh THPT, giải thích từng bước suy luận bằng luật IF–THEN." />
+		<meta name="theme-color" content="#101b2c" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/advisor.css" />
+	</head>
+	<body class="is-preload">
+		<section id="header">
+			<div class="hero-orbit orbit-one" aria-hidden="true"></div>
+			<div class="hero-orbit orbit-two" aria-hidden="true"></div>
+			<header class="major hero-content">
+				<p class="eyebrow"><span class="status-dot"></span> HỆ CHUYÊN GIA HƯỚNG NGHIỆP · DÀNH CHO HỌC SINH THPT</p>
+				<h1>Chọn ngành nghề<br /><span>hợp với chính bạn.</span></h1>
+				<p class="hero-description">Khám phá nhóm ngành và ngành học phù hợp từ điểm các môn, sở thích và năng lực. Mỗi gợi ý đều đi kèm chuỗi suy luận rõ ràng — bạn biết hệ thống nghĩ gì và vì sao.</p>
+			</header>
+			<div class="hero-actions">
+				<a href="#one" class="button primary scrolly">Khám phá hướng đi <span aria-hidden="true">↓</span></a>
+				<a href="#how-it-works" class="text-link scrolly">Cách hệ thống hoạt động <span aria-hidden="true">↗</span></a>
+			</div>
+			<div class="hero-footnote"><span>01 — 03</span><span class="hero-line"></span><span>Hiểu mình · Chọn hướng · Đi xa hơn</span></div>
+		</section>
+
+		<main>
+			<section id="one" class="main advisor-section">
+				<div class="container">
+					<div class="section-heading">
+						<p class="eyebrow">01 / HỒ SƠ HỌC SINH</p>
+						<h2>Hiểu mình trước khi chọn ngành.</h2>
+						<p>Cung cấp điểm các môn, sở thích, năng lực nổi trội và tổ hợp dự kiến. Hệ thống đối chiếu hồ sơ với cơ sở tri thức hướng nghiệp để gợi ý nhóm ngành và ngành tham khảo.</p>
+					</div>
+					<p id="knowledge-status" class="knowledge-status" role="status">Đang nạp cơ sở tri thức hướng nghiệp…</p>
+
+					<form id="advisor-form" novalidate>
+						<div class="profile-card">
+							<div class="profile-card-heading">
+								<span class="step-number">01</span>
+								<div><h3>Thông tin học tập</h3><p>Nhập những điểm số bạn có; để trống môn chưa có điểm. Chọn cùng một loại điểm để so sánh nhất quán.</p></div>
+							</div>
+							<div class="row gtr-uniform profile-meta">
+								<div class="col-6 col-12-small"><label for="student-name">Tên học sinh <span class="optional">(không bắt buộc)</span></label><input type="text" id="student-name" placeholder="Ví dụ: Minh Anh" maxlength="60" autocomplete="given-name" /></div>
+								<div class="col-6 col-12-small"><label for="score-type">Loại điểm</label><select id="score-type"><option value="hoc_ba">Điểm học bạ</option><option value="thi_thu">Điểm thi thử</option><option value="thi_chinh_thuc">Điểm thi chính thức</option></select></div>
+							</div>
+							<div class="profile-subheading"><strong>Điểm các môn (thang 10)</strong><span>Ít nhất một môn có điểm</span></div>
+							<div id="score-fields" class="score-grid">
+								<label class="score-field" for="Diem_Toan">Toán<input id="Diem_Toan" name="Diem_Toan" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Ly">Vật lý<input id="Diem_Ly" name="Diem_Ly" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Hoa">Hóa học<input id="Diem_Hoa" name="Diem_Hoa" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Sinh">Sinh học<input id="Diem_Sinh" name="Diem_Sinh" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Tin">Tin học<input id="Diem_Tin" name="Diem_Tin" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Van">Ngữ văn<input id="Diem_Van" name="Diem_Van" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Su">Lịch sử<input id="Diem_Su" name="Diem_Su" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Dia">Địa lý<input id="Diem_Dia" name="Diem_Dia" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Anh">Tiếng Anh<input id="Diem_Anh" name="Diem_Anh" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+								<label class="score-field" for="Diem_Ve">Năng khiếu vẽ<input id="Diem_Ve" name="Diem_Ve" type="number" min="0" max="10" step="0.1" placeholder="—" /></label>
+							</div>
+							<div class="row gtr-uniform profile-meta">
+								<div class="col-6 col-12-small">
+									<label for="To_Hop_Du_Kien">Tổ hợp dự kiến <span class="optional">(để tính tổng 3 môn)</span></label>
+									<select id="To_Hop_Du_Kien"><option value="">Chưa chọn tổ hợp</option><option value="A00">A00 · Toán – Lý – Hóa</option><option value="A01">A01 · Toán – Lý – Anh</option><option value="B00">B00 · Toán – Hóa – Sinh</option><option value="C00">C00 · Văn – Sử – Địa</option><option value="D01">D01 · Toán – Văn – Anh</option><option value="D07">D07 · Toán – Hóa – Anh</option><option value="B08">B08 · Toán – Sinh – Anh</option><option value="X06">X06 · Toán – Lý – Tin</option><option value="X26">X26 · Toán – Tin – Anh</option></select>
+								</div>
+								<div class="col-6 col-12-small">
+									<label for="Nang_Luc_Noi_Troi">Năng lực nổi trội</label>
+									<select id="Nang_Luc_Noi_Troi"><option value="">Chọn năng lực phù hợp</option><option value="Tu_Duy_Logic">Tư duy logic</option><option value="Thao_Tac_Ky_Thuat">Thao tác kỹ thuật</option><option value="Tham_My_Nghe_Thuat">Thẩm mỹ – nghệ thuật</option><option value="Ngon_Ngu_Dien_Dat">Ngôn ngữ, diễn đạt</option><option value="To_Chuc_Lanh_Dao">Tổ chức, lãnh đạo</option><option value="Phan_Tich_Chi_Tiet">Phân tích chi tiết</option></select>
+								</div>
+							</div>
+						</div>
+
+						<div class="profile-card interests-card">
+							<div class="profile-card-heading">
+								<span class="step-number">02</span>
+								<div><h3>Sở thích của bạn</h3><p>Chọn một hoặc nhiều hoạt động bạn hứng thú.</p></div>
+							</div>
+							<div id="interest-options" class="choice-grid">
+								<label><input type="checkbox" name="So_Thich" value="May_Moc" /><span>Máy móc, thiết bị</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Lap_Trinh" /><span>Lập trình, công nghệ</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Nghien_Cuu" /><span>Nghiên cứu, khám phá</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Sang_Tao" /><span>Sáng tạo, thiết kế</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Giao_Tiep" /><span>Giao tiếp, kết nối</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Giang_Day" /><span>Giảng dạy, hướng dẫn</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Kinh_Doanh" /><span>Kinh doanh, khởi nghiệp</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Con_So_Du_Lieu" /><span>Số liệu, tổ chức thông tin</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Cham_Soc_Suc_Khoe" /><span>Chăm sóc sức khỏe</span></label>
+								<label><input type="checkbox" name="So_Thich" value="Tranh_Bien_Luat" /><span>Tranh biện, công bằng</span></label>
+							</div>
+							<p id="form-error" class="form-message" role="alert" hidden>Nhập ít nhất một điểm môn học hoặc chọn sở thích/năng lực để hệ thống có căn cứ tư vấn.</p>
+							<div class="form-actions">
+								<p><span id="selected-count">0</span> thông tin đã chọn</p>
+								<button id="recommend-button" type="submit" class="button primary" disabled>Nhận tư vấn ngành nghề <span aria-hidden="true">→</span></button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section id="results" class="main results-section" aria-live="polite" hidden>
+				<div class="container">
+					<div class="section-heading">
+						<p class="eyebrow">02 / KẾT QUẢ DÀNH CHO BẠN</p>
+						<h2 id="result-heading">Những hướng đi đáng để khám phá.</h2>
+						<p id="result-summary"></p>
+					</div>
+					<div id="recommendation-list" class="recommendation-list"></div>
+					<div id="derived-facts" class="derived-facts"></div>
+					<div id="intermediate-results" class="intermediate-results" hidden></div>
+					<div id="no-results" class="empty-state" hidden>
+						<span class="empty-mark" aria-hidden="true">↗</span>
+						<h3>Chưa đủ dữ kiện để gợi ý một ngành cụ thể.</h3>
+						<p>Điều đó không có nghĩa là bạn không phù hợp — chỉ là cơ sở luật hiện tại chưa tìm thấy tổ hợp phù hợp. Hãy thử chọn thêm thế mạnh hoặc sở thích.</p>
+					</div>
+
+					<div class="explanation-panel">
+						<div class="explanation-heading">
+							<div><p class="eyebrow">EXPLAINABLE AI · MINH BẠCH TỪNG BƯỚC</p><h3>Vì sao hệ thống gợi ý?</h3></div>
+							<span class="explain-mark" aria-hidden="true">✳</span>
+						</div>
+						<p class="explanation-intro">Mỗi khuyến nghị bên dưới đều liên kết với các dữ kiện bạn chọn và luật IF–THEN đã kích hoạt.</p>
+						<div id="explanation-list" class="explanation-list"></div>
+					</div>
+
+					<details class="trace-details">
+						<summary><span>Nhật ký suy diễn</span><span class="trace-summary-note">Xem tập xung đột, luật được chọn và lý do</span></summary>
+						<div id="trace-list" class="trace-list"></div>
+					</details>
+					<div class="results-actions">
+						<button id="edit-profile" type="button" class="button">Điều chỉnh thông tin</button>
+						<button id="new-profile" type="button" class="button primary">Làm lại từ đầu <span aria-hidden="true">↺</span></button>
+					</div>
+				</div>
+			</section>
+
+			<section id="how-it-works" class="main method-section">
+				<div class="container">
+					<div class="section-heading">
+						<p class="eyebrow">03 / HỆ THỐNG SUY LUẬN NHƯ THẾ NÀO?</p>
+						<h2>Không phải chiếc hộp đen.</h2>
+						<p>Gợi ý được tạo ra từ hồ sơ học tập, mô hình sở thích Holland và các luật IF–THEN nhiều tầng. Bạn có thể lần lại từng bước hệ thống đã dùng để đi đến kết luận.</p>
+					</div>
+					<div class="method-grid">
+						<article class="method-card"><span>01</span><h3>Bạn chia sẻ</h3><p>Điểm môn học, tổ hợp dự kiến, sở thích và năng lực là các sự kiện ban đầu trong hồ sơ.</p></article>
+						<article class="method-card"><span>02</span><h3>Luật được kích hoạt</h3><p>46 luật suy diễn theo tầng nhận diện khối thế mạnh, thiên hướng Holland, phân khúc điểm, nhóm ngành và ngành tham khảo.</p></article>
+						<article class="method-card"><span>03</span><h3>Bạn xem lý do</h3><p>Hệ số tin cậy, luật đã chạy và chuỗi giải thích được trình bày để bạn tự đánh giá gợi ý.</p></article>
+					</div>
+					<div class="knowledge-note"><span class="knowledge-icon" aria-hidden="true">i</span><p><strong>Một gợi ý để tham khảo, không phải kết luận về tương lai.</strong><br />Website dùng bộ tri thức hướng nghiệp tổng quát của dự án. Các ngưỡng phân khúc điểm là quy ước mô phỏng, không phải điểm chuẩn hay điều kiện tuyển sinh. Mã ngành, tổ hợp xét tuyển và điều kiện thực tế cần được xác minh trong đề án tuyển sinh của từng trường.</p></div>
+				</div>
+			</section>
+		</main>
+
+		<footer id="footer">
+			<div class="container footer-inner">
+				<div><p class="eyebrow">HỆ CHUYÊN GIA HƯỚNG NGHIỆP</p><p class="footer-title">Một khởi đầu nhỏ cho<br />một lựa chọn có hiểu biết.</p></div>
+				<div class="footer-meta"><p>Đồ án Hệ chuyên gia · Tư vấn chọn ngành/nghề cho học sinh THPT</p><p>Giao diện xây dựng dựa trên HTML5 UP Highlights.</p></div>
+			</div>
+			<footer class="copyright"><span>© Nhóm đồ án Trí tuệ nhân tạo</span><a href="https://html5up.net/license" target="_blank" rel="noreferrer">HTML5 UP · CCA 3.0 License</a></footer>
+		</footer>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/advisor.js"></script>
+	</body>
+</html>

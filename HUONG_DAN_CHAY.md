@@ -48,9 +48,10 @@ các sự kiện đầu vào dẫn đến từng khuyến nghị; nhật ký suy
 Website tư vấn chọn ngành/nghề THPT nằm trong thư mục `website` và nạp cơ sở tri thức
 tổng quát từ `kb/rules_kb.json`. Vì vậy, chạy máy chủ từ thư mục gốc:
 ```powershell
-python -m http.server 8000
+.\.venv\Scripts\python.exe run_website.py
 ```
-Sau đó mở `http://localhost:8000/website/`. Không mở trực tiếp file HTML vì trình duyệt
-có thể chặn việc nạp JSON cục bộ. Website có form điểm môn, tổ hợp dự kiến, sở thích,
-năng lực, kết quả tư vấn, giải thích chuỗi suy diễn và nhật ký xử lý xung đột. Xem thêm
-`website/README.md` để biết giới hạn của khuyến nghị.
+Terminal sẽ hiện đường dẫn `http://localhost:8000/website/`; nhấn **Ctrl+chuột trái**
+vào đường dẫn đó để mở website. Không mở trực tiếp file HTML vì trình duyệt có thể chặn
+việc nạp JSON cục bộ. Nhấn **Ctrl+C** trong Terminal để dừng máy chủ. Website có form
+điểm môn, tổ hợp dự kiến, sở thích, năng lực, kết quả tư vấn, giải thích chuỗi suy diễn
+và nhật ký xử lý xung đột. Xem thêm `website/README.md` để biết giới hạn của khuyến nghị.

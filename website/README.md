@@ -10,10 +10,11 @@ Website đọc trực tiếp cơ sở tri thức đầy đủ tại `kb/rules_kb
 chạy máy chủ tĩnh từ thư mục gốc của dự án:
 
 ```powershell
-python -m http.server 8000
+.\.venv\Scripts\python.exe run_website.py
 ```
 
-Sau đó mở `http://localhost:8000/website/`.
+Terminal sẽ hiện đường dẫn `http://localhost:8000/website/`; nhấn **Ctrl+chuột trái**
+vào đường dẫn đó để mở website. Nhấn **Ctrl+C** trong Terminal để dừng máy chủ.
 
 ## Phạm vi tư vấn
 

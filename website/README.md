@@ -1,8 +1,8 @@
 # La Bàn Ngành Nghề
 
-Website **Hệ chuyên gia tư vấn chọn ngành/nghề cho học sinh THPT**, dựng trên
-template HTML5 UP Highlights. Phần giao diện được đặt trong `index.html`;
-suy diễn tiến, xử lý xung đột, CF và giải thích nằm trong `assets/js/advisor.js`.
+Website **Hệ chuyên gia tư vấn chọn ngành/nghề cho học sinh THPT**. Phần giao diện
+được đặt trong `index.html`; suy diễn tiến, xử lý xung đột, CF và giải thích nằm
+trong `assets/js/advisor.js`.
 
 ## Chạy tại máy
 
@@ -34,6 +34,6 @@ bài toán hẹp về nghề AI; nó không đại diện cho đề tài hướn
 Website vì vậy dùng bộ tri thức nhiều tầng trong `kb/rules_kb.json`, được sinh từ
 `kb/rules_data.py`, thay vì đưa ra gợi ý ngành rộng dựa trên CSV hẹp.
 
-Template, ảnh và tài nguyên gốc được giữ kèm thông tin cấp phép trong
-`LICENSE.txt` và `README.txt`. Thiết kế website và logic tư vấn là phần tuỳ biến
-của đồ án.
+Thông tin ghi công và giấy phép của tài nguyên giao diện được giữ trong
+`LICENSE.txt`, `README.txt` và liên kết ở cuối trang. Thiết kế website và logic
+tư vấn là phần tuỳ biến của đồ án.

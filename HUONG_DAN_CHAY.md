@@ -44,7 +44,7 @@ Có thể bổ sung điểm Toán, Tin học và Tiếng Anh để hiển thị 
 tính tham khảo vì cơ sở luật chưa có điều kiện/ngưỡng điểm. Phần giải thích chỉ rõ luật và
 các sự kiện đầu vào dẫn đến từng khuyến nghị; nhật ký suy diễn có thể mở ở cuối kết quả.
 
-### 5. Chạy website tĩnh dựa trên template HTML5 UP
+### 5. Chạy website tư vấn hướng nghiệp
 Website tư vấn chọn ngành/nghề THPT nằm trong thư mục `website` và nạp cơ sở tri thức
 tổng quát từ `kb/rules_kb.json`. Vì vậy, chạy máy chủ từ thư mục gốc:
 ```powershell

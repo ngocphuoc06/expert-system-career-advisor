@@ -45,29 +45,8 @@
 						$window.trigger('scroll');
 					});
 
-			// Scrolly.
-				$window.on('load.hl_scrolly', function() {
-
-					$('.scrolly').scrolly({
-						speed: 1500,
-						parent: $wrapper,
-						pollOnce: true
-					});
-
-					$window.off('load.hl_scrolly');
-
-				});
-
 			// Enable touch mode.
 				$html.addClass('is-touch');
-
-		}
-		else {
-
-			// Scrolly.
-				$('.scrolly').scrolly({
-					speed: 1500
-				});
 
 		}
 
